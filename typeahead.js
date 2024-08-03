@@ -2,10 +2,11 @@
     $.fn.typeahead = function (data, onClick) {
         var typeahead = {
             selectedIndex: -1,
-            init: function (input, onClick) {
+            init: function (input, options) {
                 this.input = input;
                 this.data = data;
-                this.onClick = onClick;
+                this.options = options || {};
+                this.handle = options.handle || function(){};
                 if (!this.input) return;
 
                 this.id = input.attr('id') ? input.attr('id') : Math.random().toString(36).substr(2, 9);
@@ -58,7 +59,9 @@
                     this.resultHolder.hide();
             },
             handleClick: function (event) {
-                this.onClick($(event.target).data("item"), event);
+                this.input.val($(event.target).data("item").name);
+                this.handle($(event.target).data("item"), event);
+                this.resultHolder.hide();
             },
             getResults: function () {
                 return this.resultHolder.children();
@@ -75,7 +78,7 @@
                 } else if (keyCode === 38 && this.selectedIndex >= 0) {
                     this.selectedIndex--;
                 } else if (keyCode === 13 && this.onClick && results[this.selectedIndex]) {
-                    this.onClick($(results[this.selectedIndex]).data("item"), event);
+                    this.handle($(results[this.selectedIndex]).data("item"), event);
                 }
                 for (var i = 0; i < results.length; i++) {
                     var result = $(results[i]);

@@ -17,6 +17,9 @@
     margin: 0;
     flex-direction: column;
     width: 200px;
+    max-height: 200px;
+    height: fit-content;
+    overflow: auto;
     border-radius: 5px;
     border: 4px solid var(--typeahead-bg-color);
     z-index: 1;

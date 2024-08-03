@@ -6,6 +6,8 @@
                 this.input = input;
                 this.data = data;
                 this.options = options || {};
+                this.minChars = options.minChars || 2;
+                this.highlight = options.highlight !== undefined ? options.highlight : true;
                 this.handle = options.handle || function(){};
                 if (!this.input) return;
 
@@ -24,7 +26,7 @@
             handleInput: function () {
                 this.clearResults();
                 var value = this.input.val();
-                if (value.length < 1) {
+                if (value.length < this.minChars) {
                     this.resultHolder.hide();
                     return;
                 }
@@ -43,12 +45,17 @@
                 for (var item of results) {
                     var listItem = $("<a></a>");
                     var matchedText = weakMatch.exec(item.name)[0];
-                    listItem.html(
-                        item.name.replace(
-                            matchedText,
-                            "<match>" + matchedText + "</match>"
-                        )
-                    );
+                    if(this.highlight) {
+                        listItem.html(
+                            item.name.replace(
+                                matchedText,
+                                "<match>" + matchedText + "</match>"
+                            )
+                        );
+                    }
+                    else {
+                        listItem.html(item.name);
+                    }
                     listItem.data("item", item);
                     this.input.next().append(listItem);
                     listItem.on("click", this.handleClick.bind(this));

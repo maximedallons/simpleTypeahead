@@ -260,7 +260,9 @@
 
     $(function() {
         $("#input").typeahead(data, {
-            handle: function(item) {
+            minChars: 1, //Default: 2
+            highlight: false, //Default: true
+            handle: function(item) { //Additional callback function [Optional]
                 console.log(`Name: ${item.name}, Code: ${item.code}`);
             },
         });

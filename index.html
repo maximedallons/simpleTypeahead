@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="typeahead.css">
+</head>
+<body>
+<label for="input">Test: </label><input type="text" id="input" class="input" placeholder="Canada, Belgium, Japan, ..."/>
+</body>
+
+<script src="jquery.js"></script>
+<script src="typeahead.js"></script>
+<script>
+    var data = [
+        { name: "Belgium", "result" : "1"},
+        { name: "France", "result" : "2"},
+        { name: "Japan", "result" : "3"},
+        { name: "USA", "result" : "4"},
+        { name: "Canada", "result" : "5"},
+        { name: "Germany", "result" : "6"},
+        { name: "Italy", "result" : "7"},
+        { name: "Spain", "result" : "8"},
+        { name: "Portugal", "result" : "9"},
+        { name: "Netherlands", "result" : "10"},
+        { name: "United Kingdom", "result" : "11"},
+        { name: "Switzerland", "result" : "12"},
+        { name: "Sweden", "result" : "13"},
+        { name: "Norway", "result" : "14"},
+        { name: "Denmark", "result" : "15"},
+        { name: "Finland", "result" : "16"},
+        { name: "Iceland", "result" : "17"},
+        { name: "Ireland", "result" : "18"},
+        { name: "Austria", "result" : "19"},
+        { name: "Greece", "result" : "20"},
+        { name: "Poland", "result" : "21"},
+        { name: "Czech Republic", "result" : "22"},
+        { name: "Slovakia", "result" : "23"},
+        { name: "Hungary", "result" : "24"},
+        { name: "Romania", "result" : "25"},
+        { name: "Bulgaria", "result" : "26"},
+        { name: "Croatia", "result" : "27"},
+        { name: "Serbia", "result" : "28"},
+        { name: "Bosnia and Herzegovina", "result" : "29"},
+        { name: "Montenegro", "result" : "30"},
+        { name: "Albania", "result" : "31"},
+        { name: "Macedonia", "result" : "32"},
+        { name: "Kosovo", "result" : "33"},
+        { name: "Slovenia", "result" : "34"},
+        { name: "Estonia", "result" : "35"},
+        { name: "Latvia", "result" : "36"},
+        { name: "Lithuania", "result" : "37"}
+    ];
+
+    $(function() {
+        let callback = function() {
+            console.log("callback");
+        };
+        $("#input").typeahead(data, callback);
+    })
+</script>
+
+</html>

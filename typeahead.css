@@ -1,0 +1,52 @@
+:root {
+    --typeahead-text-color: #1E1E1E;
+    --typeahead-bg-color: #F6F6F6;
+    --typeahead-text-match-color : #4989ED;
+    --typeahead-hover-text-color: #1E1E1E;
+    --typeahead-hover-bg-color: #F7F7F7;
+}
+
+.typeahead-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.typeahead-content {
+    display: none;
+    position: absolute;
+    margin: 0;
+    flex-direction: column;
+    width: 200px;
+    border-radius: 5px;
+    border: 4px solid var(--typeahead-bg-color);
+    z-index: 1;
+    & > a {
+        color: var(--typeahead-text-color);
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 0.3rem 1.25rem;
+        border-radius: 0;
+        font-weight: 600;
+        transition: all 0.1s;
+        cursor: pointer;
+        display: block;
+        border-bottom: 2px solid var(--typeahead-bg-color);
+
+        &:nth-child(1) {
+            border-radius: 5px 5px 0 0;
+        }
+        &:nth-last-child(1) {
+            border-bottom: 0;
+            border-radius: 0 0 5px 5px;
+        }
+
+        &:hover, &:active, &:focus {
+            color: var(--typeahead-hover-text-color);
+            background-color: var(--typeahead-hover-bg-color);
+        }
+
+        & > match {
+            color: var(--typeahead-text-match-color);
+        }
+    }
+}

@@ -38,10 +38,17 @@ $("#input").typeahead("https://maximedallons.github.io/assets/countries.json", {
 The only property that is mandatory is 'name'. As long as it is present, you're able to have any other properties in your json element and use it in the custom callback.
 
 #Options
+Note that all these options, as the name suggests, are optional. There is no need to implement them for the typeahead to work properly.
 
+- **handle [default: null]** = Custom callback function that will be executed when an element is selected. The selected element will be passed as an argument, giving the ability to get any property from the json object.
+- **property [default: 'name']** = Property to be displayed in the dropdown. If the property is not present in the json object, the library will default to 'name'.
 - **minChars [default: 1]** = Minimum number of characters needed before the search is executed.
 - **highlight [default: true]** = Highlights the characters matching the search query
-- **handle [default: null]** = Custom callback function that will be executed when an element is selected. The selected element will be passed as an argument, giving the ability to get any property from the json object.
+- **success(response) [default: null]** = Custom callback function that will be executed when the data is successfully retrieved from the url.
+- **fail(response) [default: logs the error]** = Custom callback function that will be executed when the data is not successfully retrieved from the url.
+- **loading [default: null]** = Custom callback function that will be executed when the data is being retrieved from the url.
+- **initialized [default: null]** = Custom callback function that will be executed when the data is correct and the dropdown ready to be displayed.
+- **dataError [default: null]** = Custom callback function that will be executed when the data is not in the correct format. Usually when one or more elements are missing their defined property (default: name).
 
 
 ## Contributing

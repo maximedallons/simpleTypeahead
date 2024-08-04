@@ -29,12 +29,19 @@ $("#input").typeahead(data, {
     },
 });
 ```
+It also works with a url returning a json object.
+```javascript
+$("#input").typeahead("https://maximedallons.github.io/assets/countries.json", {
+    ...
+});
+```
 The only property that is mandatory is 'name'. As long as it is present, you're able to have any other properties in your json element and use it in the custom callback.
 
 #Options
 
 - **minChars [default: 1]** = Minimum number of characters needed before the search is executed.
 - **highlight [default: true]** = Highlights the characters matching the search query
+- **handle [default: null]** = Custom callback function that will be executed when an element is selected. The selected element will be passed as an argument, giving the ability to get any property from the json object.
 
 
 ## Contributing
